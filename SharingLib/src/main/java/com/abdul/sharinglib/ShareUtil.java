@@ -33,15 +33,17 @@ public class ShareUtil {
      * @param imageUri
      */
     public static void share(Context context, String sharingText, Uri imageUri) {
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("*/*");
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
         if (imageUri != null) {
             Uri imgUri = convertUriBitmapUtil(context, imageUri);
-            share.putExtra(Intent.EXTRA_STREAM, imgUri);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, imgUri);
+            shareIntent.setType("*/*");
+        } else {
+            shareIntent.setType("text/plain");
         }
-        share.putExtra(Intent.EXTRA_SUBJECT, "Email Subject");
-        share.putExtra(Intent.EXTRA_TEXT, sharingText);
-        context.startActivity(Intent.createChooser(share, "Select"));
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Email Subject");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, sharingText);
+        context.startActivity(Intent.createChooser(shareIntent, "Select"));
     }
 
     private static Uri convertUriBitmapUtil(Context context, Uri uri) {
