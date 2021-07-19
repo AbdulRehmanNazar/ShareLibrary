@@ -1,0 +1,3 @@
+include ':SharingLib'
+include ':app'
+rootProject.name = "SharingUtil"
