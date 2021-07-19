@@ -35,9 +35,10 @@ public class ShareUtil {
     public static void share(Context context, String sharingText, Uri imageUri) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         if (imageUri != null) {
+//            shareIntent.setType("*/*");
+            shareIntent.setType("image/jpeg");
             Uri imgUri = convertUriBitmapUtil(context, imageUri);
             shareIntent.putExtra(Intent.EXTRA_STREAM, imgUri);
-            shareIntent.setType("*/*");
         } else {
             shareIntent.setType("text/plain");
         }
