@@ -29,20 +29,20 @@ public class ShareUtil {
      * Utility method to share text, URL and images
      *
      * @param context
+     * @param subjectText
      * @param sharingText
      * @param imageUri
      */
-    public static void share(Context context, String sharingText, Uri imageUri) {
+    public static void share(Context context, String subjectText, String sharingText, Uri imageUri) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         if (imageUri != null) {
-//            shareIntent.setType("*/*");
-            shareIntent.setType("image/jpeg");
+            shareIntent.setType("*/*");
             Uri imgUri = convertUriBitmapUtil(context, imageUri);
             shareIntent.putExtra(Intent.EXTRA_STREAM, imgUri);
         } else {
             shareIntent.setType("text/plain");
         }
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Email Subject");
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, subjectText);
         shareIntent.putExtra(Intent.EXTRA_TEXT, sharingText);
         context.startActivity(Intent.createChooser(shareIntent, "Select"));
     }

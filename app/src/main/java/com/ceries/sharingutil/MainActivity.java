@@ -28,14 +28,14 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     private Button shareButton, imagePicker;
-    private EditText textBox;
+    private EditText textBox, subjectTextBox;
     private Uri imageUri = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        subjectTextBox = findViewById(R.id.subjectTextBox);
         textBox = findViewById(R.id.textBox);
         imagePicker = findViewById(R.id.imagePickBtn);
         imagePicker.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +51,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (textBox.getText().toString().length() == 0) {
-                    Toast.makeText(MainActivity.this, "Please enter text", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Please enter sharing text", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ShareUtil.share(MainActivity.this, textBox.getText().toString(), imageUri);
+                String subjectText = "";
+                if (subjectTextBox.getText().toString().length() > 0) {
+                    subjectText = subjectTextBox.getText().toString();
+                }
+
+                ShareUtil.share(MainActivity.this, subjectText, textBox.getText().toString(), imageUri);
             }
         });
     }
