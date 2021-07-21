@@ -57,7 +57,7 @@ public class ShareUtil {
                 bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), imageUri);
             }
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes);
             String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
             imageUri = Uri.parse(path);
         } catch (IOException e) {
