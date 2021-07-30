@@ -19,6 +19,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textBox" />
 
+    <Button
+        android:id="@+id/filePickBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Pick File"
+        app:layout_constraintBottom_toBottomOf="@+id/textBox"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textBox" />
 
     <EditText
         android:id="@+id/subjectTextBox"
@@ -57,5 +67,17 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textBox" />
+
+    <Button
+        android:id="@+id/shareFileBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Share File"
+        app:layout_constraintBottom_toBottomOf="@+id/textBox"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textBox" />
+
 
 </LinearLayout>

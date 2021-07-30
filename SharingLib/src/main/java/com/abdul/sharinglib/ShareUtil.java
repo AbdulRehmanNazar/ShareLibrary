@@ -65,4 +65,23 @@ public class ShareUtil {
         }
         return imageUri;
     }
+
+    /**
+     * Utility method to share file
+     *
+     * @param context
+     * @param subjectText
+     * @param sharingText
+     * @param fileUri
+     */
+    public static void shareFile(Context context, String subjectText, String sharingText, Uri fileUri) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("*/*");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, subjectText);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, sharingText);
+        context.startActivity(Intent.createChooser(shareIntent, "Select"));
+    }
+
+
 }
